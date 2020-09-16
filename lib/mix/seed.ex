@@ -6,6 +6,7 @@ defmodule Mix.Tasks.Seed do
     Mix.Task.run "app.start"
     drop_tables()
     create_tables()
+    # standard_users()
     # seed_data()
   end
 
@@ -29,6 +30,11 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "Create TABLE user_school (user_id INTEGER NOT NULL, school_id INTEGER NOT NULL)", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "Create TABLE user_group (user_id INTEGER NOT NULL, group_id INTEGER NOT NULL)", [], pool: DBConnection.ConnectionPool)
   end
+
+  # defp standard_users() do
+  #   IO.puts("Adding standard users")
+  #   Postgrex.query!(DB, "INSERT INTO users (name, pwdhash, img_path, username, school_id, admin) VALUES ('Bananträd', 'hashatlösen', 'standard.png', 'sudo', 1, 1);", [])
+  # end
 
   # defp seed_data() do
   #   IO.puts("Seeding data")
