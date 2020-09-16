@@ -1,4 +1,4 @@
-h1 Fruits.index (/fruits)
+h1 Fruits.index
 
 = if user do
 	form action="/users/logout" method="post"
@@ -17,5 +17,3 @@ ul
       a href="/fruits/#{fruit.id}" #{fruit.name} - #{fruit.tastiness}
 
 a href="/fruits/new" Add new fruit
-
-
