@@ -11,9 +11,9 @@ h1 Fruits.index
         input type="password" name="pwd" id="password"
         button type="submit" Log In
 
-ul
-  = for fruit <- fruits do
-    li
-      a href="/fruits/#{fruit.id}" #{fruit.name} - #{fruit.tastiness}
+/ ul
+/   = for fruit <- fruits do
+/     li
+/       a href="/fruits/#{fruit.id}" #{fruit.name} - #{fruit.tastiness}
 
-a href="/fruits/new" Add new fruit
+/ a href="/fruits/new" Add new fruit
