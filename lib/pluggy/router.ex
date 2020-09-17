@@ -27,12 +27,13 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get("/") do
-    if !UserController.logged_in() do
-      redirect("/login")
-      IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
-    else
-      IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
-    end
+    FruitController.index(conn)
+    # if !UserController.logged_in() do
+    #   # redirect("/login")
+    #   IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
+    # else
+    #   IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
+    # end
   end
   # get("/fruits", do: FruitController.index(conn))
   # get("/fruits/new", do: FruitController.new(conn))
