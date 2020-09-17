@@ -35,7 +35,7 @@ defmodule Pluggy.User do
       img_path = params["img_path"]
       admin = params["admin"]
 
-    Postgrex.query!(DB, "INSERT INTO users (name, username, pwdhash, img_path, admin) VALUES ($1, $2, $3, $4 $5)", 
+    Postgrex.query!(DB, "INSERT INTO users (name, username, pwdhash, img_path, admin) VALUES ($1, $2, $3, $4 $5)",
       [name, username, pwdhash, img_path, admin],
       pool: DBConnection.ConnectionPool
     )
@@ -48,10 +48,10 @@ defmodule Pluggy.User do
   end
 
   def to_struct([[id, name, pwdhash, img_path, username, admin]]) do
-    .User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
+    %User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
   end
 
   def to_struct_list(rows) do
-    for [id, name, pwdhash, img_path, username, admin] <- rows, do: .User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
+    for [id, name, pwdhash, img_path, username, admin] <- rows, do: %User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
   end
 end
