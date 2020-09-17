@@ -1,0 +1,3 @@
+- h1 = "School"
+
+a href="/school/#{skola}/#{klass}"
