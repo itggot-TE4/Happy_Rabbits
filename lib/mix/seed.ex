@@ -10,6 +10,8 @@ defmodule Mix.Tasks.Seed do
     # seed_data()
   end
 
+    # hej
+
   defp drop_tables() do
     IO.puts("Dropping tables")
     Postgrex.query!(DB, "DROP TABLE IF EXISTS fruits", [], pool: DBConnection.ConnectionPool)
