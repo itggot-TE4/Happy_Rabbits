@@ -9,7 +9,7 @@ defmodule Pluggy.User do
   end
 
   def get(id) do
-    Postgrex.query!(DB, "SELECT * FROM users WHERE id = $1 LIMIT 1", [String.to_integer(id)],
+    Postgrex.query!(DB, "SELECT * FROM users WHERE id = $1 LIMIT 1", [id],
       pool: DBConnection.ConnectionPool
     ).rows
     |> to_struct

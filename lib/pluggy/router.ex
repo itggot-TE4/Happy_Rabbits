@@ -27,6 +27,9 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get("/") do
+    # IO.puts("#====conn====#")
+    # IO.inspect(conn)
+    # IO.puts("#============#")
     FruitController.index(conn)
     # if !UserController.logged_in() do
     #   # redirect("/login")
@@ -35,6 +38,15 @@ defmodule Pluggy.Router do
     #   IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
     # end
   end
+
+  post("user/login") do
+     UserController.login(conn, conn.body_params)
+  end
+
+  post("user/logout") do
+    UserController.logout(conn)
+  end
+
   # get("/fruits", do: FruitController.index(conn))
   # get("/fruits/new", do: FruitController.new(conn))
   # get("/fruits/:id", do: FruitController.show(conn, id))

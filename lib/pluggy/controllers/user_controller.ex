@@ -4,44 +4,55 @@ defmodule Pluggy.UserController do
 
   def login(conn, params) do
     username = params["username"]
-    password = params["pwd"]
+    password = params["password"]
+
+    # IO.inspect(Bcrypt.hash_pwd_salt(params["password"]))
 
      #Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
     result =
-      Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username],
+      Postgrex.query!(DB, "SELECT id, pwdhash FROM users WHERE username = $1", [username],
         pool: DBConnection.ConnectionPool
       )
 
-    case result.num_rows do
-      # no user with that username
-      0 ->
-        redirect(conn, "/fruits")
-      # user with that username exists
-      _ ->
-        [[id, password_hash]] = result.rows
+      case result.num_rows do
+          # no user with that username
+          0 ->
+              redirect(conn, "/")
+            # user with that username exists
+            _ ->
+                [[id, pwdhash]] = result.rows
+            
+                # make sure password is correct
 
-        # make sure password is correct
-        if Bcrypt.verify_pass(password, password_hash) do
+            # if (pwdhash = password) do
+            #   Plug.Conn.put_session(conn, :user_id, id) |> redirect("/")
+            # else
+            #     redirect(conn, "/")
+            # end
+        if Bcrypt.verify_pass(password, pwdhash) do
+
+          IO.inspect(pwdhash)
+
           Plug.Conn.put_session(conn, :user_id, id)
-          |> redirect("/fruits") #skicka vidare modifierad conn
+          |> redirect("/") #skicka vidare modifierad conn
         else
-          redirect(conn, "/fruits")
+          redirect(conn, "/")
         end
     end
   end
 
   def logout(conn) do
     Plug.Conn.configure_session(conn, drop: true) #tömmer sessionen
-    |> redirect("/fruits")
+    |> redirect("/")
   end
 
-  # def create(conn, params) do
-  # 	#pseudocode
-  # 	# in db table users with password_hash CHAR(60)
-  # 	# hashed_password = Bcrypt.hash_pwd_salt(params["password"])
-  #  	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
-  #  	# redirect(conn, "/fruits")
-  # end
+  def create(conn, params) do
+  	#pseudocode
+  	# in db table users with password_hash CHAR(60)
+  	# hashed_password = Bcrypt.hash_pwd_salt(params["password"])
+   	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
+   	# redirect(conn, "/fruits")
+  end
 
   # only temporary
   def logged_in(), do: false

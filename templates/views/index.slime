@@ -1,14 +1,14 @@
 h1 Fruits.index
 
 = if user do
-	form action="/users/logout" method="post"
+	form action="/user/logout" method="post"
 		button type="submit" Log Out
 - else
-    form action="/users/login" method="post"
+    form action="/user/login" method="post"
         label for="username" Username
-        input type="text" name="username" id="username"
+        input type="text" name="username" id="username" value="temp"
         label for="password" Password
-        input type="password" name="pwd" id="password"
+        input type="password" name="password" id="password" value="temp"
         button type="submit" Log In
 
 / ul
