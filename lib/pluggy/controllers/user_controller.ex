@@ -43,6 +43,9 @@ defmodule Pluggy.UserController do
   #  	# redirect(conn, "/fruits")
   # end
 
+  # only temporary
+  def logged_in(), do: false
+
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
 end
