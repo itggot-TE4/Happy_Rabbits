@@ -28,7 +28,7 @@ defmodule Pluggy.Router do
 
   get("/") do
     if !UserController.logged_in() do
-      redirect("/login")
+      # redirect("/login")
       IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
     else
       IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
