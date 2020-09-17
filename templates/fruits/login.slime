@@ -3,4 +3,4 @@
 form action="/login" method="post"
     input type="text" name="username" value=""
     input type="password"
-    button type="submit" login
+    button type="submit"  login
