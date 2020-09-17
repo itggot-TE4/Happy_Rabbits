@@ -17,13 +17,14 @@ defmodule Pluggy.FruitController do
       end
 
     #srender använder slime
-    send_resp(conn, 200, srender("fruits/index", fruits: Fruit.all(), user: current_user))
+    send_resp(conn, 200, srender("views/index", fruits: nil, user: current_user))
+    # send_resp(conn, 200, srender("views/index", fruits: Fruit.all(), user: current_user))
   end
 
   #render använder eex
-  def new(conn), do: send_resp(conn, 200, srender("fruits/new", []))
-  def show(conn, id), do: send_resp(conn, 200, srender("fruits/show", fruit: Fruit.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, srender("fruits/edit", fruit: Fruit.get(id)))
+  # def new(conn), do: send_resp(conn, 200, srender("views/new", []))
+  # def show(conn, id), do: send_resp(conn, 200, srender("views/show", fruit: Fruit.get(id)))
+  # def edit(conn, id), do: send_resp(conn, 200, srender("views/edit", fruit: Fruit.get(id)))
 
   def create(conn, params) do
     Fruit.create(params)

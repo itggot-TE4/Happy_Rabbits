@@ -1,0 +1,9 @@
+- h1 = "Fruits.edit (/fruits/#{fruit.id}/edit)"
+
+- action = "/fruits/#{fruit.id}/edit"
+- fruitname = "#{fruit.name}"
+
+form action=action method="post"
+    input type="text" name="name" value=fruitname
+    input type="text" name="tastiness" value="<%= fruit.tastiness %>"
+    button type="sumbit" update

@@ -1,0 +1,8 @@
+- h1 = "Quiz!"
+
+- action = "/schools/#{skola}/#{klass}/quiz"
+
+form action=action 
+    input type="checkbox"
+    input type="submit" submit
+    
