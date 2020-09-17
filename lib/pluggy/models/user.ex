@@ -1,7 +1,7 @@
-defmodule Pluggy.Student do
+defmodule Pluggy.User do
   defstruct(id: nil, name: "", username: "", pwdhash: "", img_path: "", admin: nil)
 
-  alias Pluggy.Student
+  alias Pluggy.User
 
   def all do
     Postgrex.query!(DB, "SELECT * FROM users", [], pool: DBConnection.ConnectionPool).rows
@@ -48,10 +48,10 @@ defmodule Pluggy.Student do
   end
 
   def to_struct([[id, name, pwdhash, img_path, username, admin]]) do
-    %Student{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
+    .User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
   end
 
   def to_struct_list(rows) do
-    for [id, name, pwdhash, img_path, username, admin] <- rows, do: %Student{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
+    for [id, name, pwdhash, img_path, username, admin] <- rows, do: .User{id: id, name: name, img_path: img_path, username: username, pwdhash: pwdhash, admin: admin}
   end
 end
