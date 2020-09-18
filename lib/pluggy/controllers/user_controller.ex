@@ -22,16 +22,7 @@ defmodule Pluggy.UserController do
                 [[id, pwdhash]] = result.rows
 
                 # make sure password is correct
-
-            # if (pwdhash = password) do
-            #   Plug.Conn.put_session(conn, :user_id, id) |> redirect("/")
-            # else
-            #     redirect(conn, "/")
-            # end
         if Bcrypt.verify_pass(password, pwdhash) do
-
-          IO.inspect(pwdhash)
-
           Plug.Conn.put_session(conn, :user_id, id)
           |> redirect("/") #skicka vidare modifierad conn
         else
@@ -52,9 +43,6 @@ defmodule Pluggy.UserController do
    	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
    	# redirect(conn, "/fruits")
   end
-
-  # only temporary
-  def logged_in(), do: false
 
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
