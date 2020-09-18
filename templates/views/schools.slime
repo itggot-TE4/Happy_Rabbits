@@ -1,12 +1,9 @@
-- h1 = "Schools"
+h1 Schools
 div class="gridcontainer"
-    div class="schoolsbox"
-        p oogie boogie
-    div class="schoolsbox"
-    div class="schoolsbox"
-    div class="schoolsbox"
-    / - Pluggy.IndexController.schoolrenderer([1,2,3,4])
-
+    div class="box"
+        a class="hero" Skolnamn
+        section class="options"
+            a EDIT
+            a REMOVE
     = for grej <- [1,2,3,4] do
         p=grej
-a hej
