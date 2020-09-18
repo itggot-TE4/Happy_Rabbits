@@ -79,11 +79,27 @@ defmodule Pluggy.Router do
   end
 
   post("user/login") do
-     UserController.login(conn, conn.body_params)
+    UserController.login(conn, conn.body_params)
   end
 
   post("user/logout") do
     UserController.logout(conn)
+  end
+
+  get("/schools") do
+    IndexController.index(conn, "schools")
+  end
+
+  get("/schools/school") do
+    IndexController.index(conn, "school")
+  end
+
+  get("/schools/school/class") do
+    IndexController.index(conn, "class")
+  end
+
+  get("/schools/school/class/quiz") do
+    IndexController.index(conn, "quiz")
   end
 
   # get("/fruits", do: FruitController.index(conn))

@@ -6,7 +6,7 @@ defmodule Pluggy.IndexController do
   import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
-  def index(conn) do
+  def index(conn, file) do
     # get user if logged in
     session_user = conn.private.plug_session["user_id"]
 
@@ -59,5 +59,13 @@ defmodule Pluggy.IndexController do
 
   defp redirect(conn, url) do
     Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  end
+
+  def schoolrenderer([]) do end
+
+  def schoolrenderer([head|tail] = yeah) do
+    schoolrenderer(tail)
+    IO.inspect(head)
+    p="1"
   end
 end

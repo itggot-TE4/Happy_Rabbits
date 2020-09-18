@@ -2,7 +2,7 @@ body {
 	margin: 0;
 	background-color: whitesmoke;
 	font-family: monospace;
-	color: white;
+	color: lightskyblue;
 }
 
 nav {
@@ -11,5 +11,35 @@ nav {
 	justify-content: space-between;
 	align-items: center;
 	background-color: lightskyblue;
-    padding: 0 15px 0 15px;
+	padding: 0 15px 0 15px;
+	color: whitesmoke;
+}
+
+.gridcontainer {
+	display: grid;	
+	grid-template-columns: repeat(3,1fr);
+	max-width: 60vw;
+	margin: auto;
+
+	.box {
+		height: 15vw;
+		width: 15vw;
+		display: grid; 
+		grid-template-rows: 10vw 5vw;
+		background-color: lightskyblue;
+		color: whitesmoke;
+		margin: 20px 0 0 auto;
+
+		.hero {
+			background: rgb(180, 226, 255);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.options {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+		}
+	}
 }
