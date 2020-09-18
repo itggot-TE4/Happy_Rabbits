@@ -1,6 +1,7 @@
-- h1 = "Quiz!"
+h1 quiz
+div class="quizcontainer"
+    = for grej <- [1,2,3,4,5,6] do
 
-- action = "/schools/#{skola}/#{klass}/quiz"
 
 form action=action 
     input type="checkbox"
