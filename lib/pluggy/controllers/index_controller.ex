@@ -1,4 +1,4 @@
-defmodule Pluggy.FruitController do
+defmodule Pluggy.IndexController do
   require IEx
 
   alias Pluggy.Fruit
