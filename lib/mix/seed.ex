@@ -46,6 +46,8 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO schools (name) VALUES ('NTI-Kronhus')", [], pool: DBConnection.ConnectionPool)
   end
 
+
+
   # defp seed_data() do
   #   IO.puts("Seeding data")
   #   Postgrex.query!(DB, "INSERT INTO fruits(name, tastiness) VALUES($1, $2)", ["Apple", 5], pool: DBConnection.ConnectionPool)
