@@ -7,6 +7,7 @@ defmodule Mix.Tasks.Seed do
     drop_tables()
     create_tables()
     standard_users()
+    standard_schools()
     # seed_data()
   end
 
@@ -36,6 +37,13 @@ defmodule Mix.Tasks.Seed do
   defp standard_users() do
     IO.puts("Adding standard users")
     Postgrex.query!(DB, "INSERT INTO users (name, pwdhash, img_path, username, admin) VALUES ('temp', '$2b$12$EkW6ETcfQaiuD4lD9Sdvm.bqcJL6R/z.SHs9/twiUwwpA0kykrYs6', 'standard.png', 'temp', 1)", [], pool: DBConnection.ConnectionPool)
+  end
+
+  defp standard_schools() do
+    IO.puts("Adding standard schools")
+    Postgrex.query!(DB, "INSERT INTO schools (name) VALUES ('ITG-Göteborg')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO schools (name) VALUES ('NTI-Johanneberg')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO schools (name) VALUES ('NTI-Kronhus')", [], pool: DBConnection.ConnectionPool)
   end
 
   # defp seed_data() do

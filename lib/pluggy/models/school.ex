@@ -3,6 +3,10 @@ defmodule Pluggy.School do
   
     alias Pluggy.School
   
+    def get_all do
+      Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
+    end
+
     def all do
       Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
       |> to_struct_list

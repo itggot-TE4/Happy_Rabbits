@@ -3,6 +3,7 @@ html
     head
         title What's their face V2
         link rel="stylesheet" type="text/css" href="/pluggy.css"
+        meta charset="UTF-8"
     body
     nav
         h1 What's their face

@@ -1,6 +1,6 @@
 h1 Schools
 div class="gridcontainer"
-    = for grej <- [1,2,3,4, 5, 5, 6] do
+    = for grej <- Pluggy.School.get_all() do
         div class="box"
             a class="hero" = grej
             section class="options"
