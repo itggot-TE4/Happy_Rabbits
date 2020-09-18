@@ -1,5 +1,7 @@
-h1 Quiz!
-div class=""
+h1 quiz
+div class="quizcontainer"
+    = for grej <- [1,2,3,4,5,6] do
+
 
 form action=action 
     input type="checkbox"
