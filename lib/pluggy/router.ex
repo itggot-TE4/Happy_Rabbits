@@ -24,10 +24,13 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get("/") do
-    IO.puts("#====conn====#")
-    IO.inspect(conn)
-    IO.puts("#============#")
-    FruitController.index(conn)
+    IndexController.index(conn)
+    # if !UserController.logged_in() do
+    #   # redirect("/login")
+    #   IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
+    # else
+    #   IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
+    # end
   end
 
   post("user/login") do
