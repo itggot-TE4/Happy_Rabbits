@@ -25,11 +25,13 @@ nav {
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
+  max-width: 60vw;
+  margin: auto;
 }
 
 .schoolsbox {
-  height: 200px;
-  width: 200px;
+  height: 15vw;
+  width: 15vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
