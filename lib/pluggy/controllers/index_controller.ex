@@ -6,7 +6,7 @@ defmodule Pluggy.IndexController do
   import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
-  def index(conn) do
+  def index(conn, file) do
     # get user if logged in
     session_user = conn.private.plug_session["user_id"]
 
@@ -17,7 +17,7 @@ defmodule Pluggy.IndexController do
       end
 
     #srender använder slime
-    send_resp(conn, 200, srender("views/index", user: current_user))
+    send_resp(conn, 200, srender("views/#{file}", user: current_user))
     # send_resp(conn, 200, srender("views/index", fruits: Fruit.all(), user: current_user))
   end
 
