@@ -45,6 +45,14 @@ defmodule Pluggy.Router do
     IndexController.index(conn, "schools")
   end
 
+  get("/schools/school") do
+    IndexController.index(conn, "school")
+  end
+
+  get("/schools/school/class") do
+    IndexController.index(conn, "class")
+  end
+
   # get("/fruits", do: FruitController.index(conn))
   # get("/fruits/new", do: FruitController.new(conn))
   # get("/fruits/:id", do: FruitController.show(conn, id))
