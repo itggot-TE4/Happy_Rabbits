@@ -17,7 +17,7 @@ defmodule Pluggy.IndexController do
       end
 
     #srender använder slime
-    send_resp(conn, 200, srender("views/index", fruits: nil, user: current_user))
+    send_resp(conn, 200, srender("views/index", user: current_user))
     # send_resp(conn, 200, srender("views/index", fruits: Fruit.all(), user: current_user))
   end
 
