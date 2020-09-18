@@ -1,1 +1,3 @@
 img src="uploads/nazir.gif"
+form action="/user/logout" method="post"
+    button type="submit" Log Out

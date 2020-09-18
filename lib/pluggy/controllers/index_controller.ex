@@ -18,7 +18,18 @@ defmodule Pluggy.IndexController do
 
     #srender använder slime
     send_resp(conn, 200, srender("views/index", user: current_user))
-    # send_resp(conn, 200, srender("views/index", fruits: Fruit.all(), user: current_user))
+  end
+  
+  def sucess(conn) do
+    
+    send_resp(conn, 200, srender("views/itworks", user: nil))
+
+  end
+
+  def qwe(conn, destination) do
+
+    redirect(conn, destination)
+
   end
 
   #render använder eex

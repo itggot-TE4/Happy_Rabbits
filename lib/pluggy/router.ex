@@ -4,6 +4,8 @@ defmodule Pluggy.Router do
 
   alias Pluggy.IndexController
   alias Pluggy.UserController
+  alias Pluggy.User
+
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
@@ -23,14 +25,57 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
+  # def before_do(conn) do
+
+  #   session_user = conn.private.plug_session["user_id"]
+
+  #   current_user =
+  #     case session_user do
+  #       nil -> nil
+  #       _ -> User.get(session_user)
+  #     end
+
+  #     # IO.inspect(current_user)
+
+  #   if (current_user == nil) do
+
+  #     IO.puts("hej")
+
+  #     put_resp_content_type(conn, "/sucess")
+  #   end
+
+  # end
+
+  def logged_in(conn) do
+
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+    if current_user do
+
+    else
+      IndexController.qwe(conn, "/")
+    end
+    
+
+  end
+
+
   get("/") do
+
+    
     IndexController.index(conn)
-    # if !UserController.logged_in() do
-    #   # redirect("/login")
-    #   IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
-    # else
-    #   IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
-    # end
+    
+  end
+  
+  get("/sucess") do 
+    logged_in(conn)
+    IndexController.sucess(conn)
   end
 
   post("user/login") do
