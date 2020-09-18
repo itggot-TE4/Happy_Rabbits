@@ -2,7 +2,7 @@ h1 Schools
 div class="gridcontainer"
     = for grej <- Pluggy.School.get_all() do
         div class="box"
-            a class="hero" = grej
+            h1 class="hero" = grej
             section class="options"
                 a EDIT
                 a REMOVE

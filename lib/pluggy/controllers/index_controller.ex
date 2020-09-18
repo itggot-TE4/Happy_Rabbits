@@ -18,6 +18,8 @@ defmodule Pluggy.IndexController do
     #srender använder slime
     send_resp(conn, 200, srender("views/index", user: current_user))
   end
+
+  def schools(conn), do: send_resp(conn, 200, srender("views/school", user: nil))
   
   def sucess(conn) do
     

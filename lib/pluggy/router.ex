@@ -25,6 +25,24 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
+  def logged_in(conn) do
+
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+    if current_user do
+
+    else
+      IndexController.qwe(conn)
+    end
+
+  end
+
   # def before_do(conn) do
 
   #   session_user = conn.private.plug_session["user_id"]
@@ -46,31 +64,8 @@ defmodule Pluggy.Router do
 
   # end
 
-  def logged_in(conn) do
-
-    session_user = conn.private.plug_session["user_id"]
-
-    current_user =
-      case session_user do
-        nil -> nil
-        _ -> User.get(session_user)
-      end
-
-    if current_user do
-
-    else
-      IndexController.qwe(conn, "/")
-    end
-    
-
-  end
-
-
   get("/") do
-
-    
     IndexController.index(conn)
-    
   end
   
   get("/sucess") do 
@@ -87,19 +82,19 @@ defmodule Pluggy.Router do
   end
 
   get("/schools") do
-    IndexController.index(conn, "schools")
+    IndexController.schools(conn)
   end
 
   get("/schools/school") do
-    IndexController.index(conn, "school")
+    IndexController.school(conn)
   end
 
   get("/schools/school/class") do
-    IndexController.index(conn, "class")
+    IndexController.class(conn)
   end
 
   get("/schools/school/class/quiz") do
-    IndexController.index(conn, "quiz")
+    IndexController.quiz(conn)
   end
 
   # get("/fruits", do: FruitController.index(conn))
