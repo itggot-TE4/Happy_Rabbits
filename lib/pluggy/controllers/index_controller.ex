@@ -5,7 +5,7 @@ defmodule Pluggy.IndexController do
   import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
-  def index(conn, file) do
+  def index(conn) do
     # get user if logged in
     session_user = conn.private.plug_session["user_id"]
 
