@@ -81,15 +81,10 @@ defmodule Pluggy.Router do
       IndexController.qwe(conn, "/")
     end
 
-
   end
 
-
   get("/") do
-
-
     IndexController.index(conn)
-
   end
 
   get("/sucess") do
@@ -106,21 +101,6 @@ defmodule Pluggy.Router do
   end
 
   get("/schools") do
-<<<<<<< HEAD
-    IndexController.schools(conn)
-  end
-
-  get("/schools/school") do
-    IndexController.school(conn)
-  end
-
-  get("/schools/school/class") do
-    IndexController.class(conn)
-  end
-
-  get("/schools/school/class/quiz") do
-    IndexController.quiz(conn)
-=======
     SchoolController.schools(conn)
   end
 
@@ -134,7 +114,6 @@ defmodule Pluggy.Router do
 
   get("/schools/school/class/quiz") do
     SchoolController.quiz(conn)
->>>>>>> 12eaf0441efe32aeeca83908affca58c7e508536
   end
 
   # get("/fruits", do: FruitController.index(conn))
