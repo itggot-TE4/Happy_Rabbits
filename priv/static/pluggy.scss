@@ -7,7 +7,7 @@ body {
 
 nav {
 	display: flex;
-	height: 5vh;
+	height: 10vh;
 	justify-content: space-between;
 	align-items: center;
 	background-color: lightskyblue;
@@ -35,7 +35,9 @@ nav {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			font-size: x-large;
 		}
+
 		.options {
 			display: flex;
 			align-items: center;

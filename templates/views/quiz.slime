@@ -1,6 +1,5 @@
-- h1 = "Quiz!"
-
-- action = "/schools/#{skola}/#{klass}/quiz"
+h1 Quiz!
+div class=""
 
 form action=action 
     input type="checkbox"
