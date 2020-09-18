@@ -49,4 +49,12 @@ defmodule Pluggy.IndexController do
   defp redirect(conn, url) do
     Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
   end
+
+  def schoolrenderer([]) do end
+
+  def schoolrenderer([head|tail] = yeah) do
+    schoolrenderer(tail)
+    IO.inspect(head)
+    p="1"
+  end
 end
