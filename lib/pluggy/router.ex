@@ -2,6 +2,7 @@ defmodule Pluggy.Router do
   use Plug.Router
   use Plug.Debugger
 
+  alias Pluggy.SchoolController
   alias Pluggy.IndexController
   alias Pluggy.UserController
   alias Pluggy.User
@@ -64,11 +65,34 @@ defmodule Pluggy.Router do
 
   # end
 
-  get("/") do
-    IndexController.index(conn)
+  def logged_in(conn) do
+
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+    if current_user do
+
+    else
+      IndexController.qwe(conn, "/")
+    end
+
+
   end
-  
-  get("/sucess") do 
+
+
+  get("/") do
+
+
+    IndexController.index(conn)
+
+  end
+
+  get("/sucess") do
     logged_in(conn)
     IndexController.sucess(conn)
   end
@@ -82,6 +106,7 @@ defmodule Pluggy.Router do
   end
 
   get("/schools") do
+<<<<<<< HEAD
     IndexController.schools(conn)
   end
 
@@ -95,6 +120,21 @@ defmodule Pluggy.Router do
 
   get("/schools/school/class/quiz") do
     IndexController.quiz(conn)
+=======
+    SchoolController.schools(conn)
+  end
+
+  get("/schools/school") do
+    SchoolController.school(conn)
+  end
+
+  get("/schools/school/group") do
+    SchoolController.group(conn)
+  end
+
+  get("/schools/school/class/quiz") do
+    SchoolController.quiz(conn)
+>>>>>>> 12eaf0441efe32aeeca83908affca58c7e508536
   end
 
   # get("/fruits", do: FruitController.index(conn))
