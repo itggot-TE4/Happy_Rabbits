@@ -1,4 +1,22 @@
 body {
-	background-color: whitesmoke;
-	font-family: monospace;
+  margin: 0;
+  background-color: whitesmoke;
+  font-family: monospace;
+  color: white;
 }
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 5vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: lightskyblue;
+  padding: 0 15px 0 15px;
+}
+/*# sourceMappingURL=pluggy.css.map */

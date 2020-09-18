@@ -4,4 +4,17 @@ html
         title What's their face V2
         link rel="stylesheet" type="text/css" href="/pluggy.css"
     body
+    nav
+        h1 What's their face
+        div
+            = if user do
+                form action="/user/logout" method="post"
+                    button type="submit" Log Out
+            - else
+                form action="/user/login" method="post"
+                    label for="username" Username
+                    input type="text" name="username" id="username" value="temp"
+                    label for="password" Password
+                    input type="password" name="password" id="password" value="temp"
+                    button type="submit" Log In
     = template

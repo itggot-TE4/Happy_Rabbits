@@ -1,0 +1,15 @@
+body {
+	margin: 0;
+	background-color: whitesmoke;
+	font-family: monospace;
+	color: white;
+}
+
+nav {
+	display: flex;
+	height: 5vh;
+	justify-content: space-between;
+	align-items: center;
+	background-color: lightskyblue;
+    padding: 0 15px 0 15px;
+}
