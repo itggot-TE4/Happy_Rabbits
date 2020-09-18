@@ -2,10 +2,6 @@ defmodule Pluggy.School do
     defstruct(id: nil, name: "")
   
     alias Pluggy.School
-  
-    def get_all do
-      Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
-    end
 
     def all do
       Postgrex.query!(DB, "SELECT * FROM schools", [], pool: DBConnection.ConnectionPool).rows
@@ -40,9 +36,7 @@ defmodule Pluggy.School do
     end
   
     def delete(id) do
-      Postgrex.query!(DB, "DELETE FROM schools WHERE id = $1", [String.to_integer(id)],
-        pool: DBConnection.ConnectionPool
-      )
+      Postgrex.query!(DB, "DELETE FROM schools WHERE id = $1", [String.to_integer(id)], pool: DBConnection.ConnectionPool)
     end
   
     def to_struct([[id, name]]) do

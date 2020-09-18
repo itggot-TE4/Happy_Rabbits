@@ -6,6 +6,7 @@ defmodule Pluggy.Router do
   alias Pluggy.IndexController
   alias Pluggy.UserController
   alias Pluggy.User
+  alias Pluggy.School
 
 
   plug(Plug.Static, at: "/", from: :pluggy)
@@ -102,6 +103,10 @@ defmodule Pluggy.Router do
 
   get("/schools") do
     SchoolController.schools(conn)
+  end
+
+  post("/remove_school") do
+    SchoolController.delete(conn)
   end
 
   get("/schools/school") do

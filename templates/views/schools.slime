@@ -1,9 +1,9 @@
 h1 Schools
 div class="gridcontainer"
-    = for grej <- Pluggy.School.get_all() do
-        div class="box" id="#{grej}"
-            h1 class="hero" = grej
+    = for skola <- Pluggy.School.all do
+        div class="box" id="hej"
+            h1 class="hero" =skola.name
             section class="options"
-                a href="/" EDIT
-                form action="/remove/#{}" 
-                a href="/" REMOVE
+                form action="/remove_school" method="post"
+                    input type="hidden" value="#{skola.id}" name="id"
+                    button type="submit" Remove
