@@ -1,9 +1,8 @@
 h1 Schools
 div class="gridcontainer"
-    div class="box"
-        a class="hero" Skolnamn
-        section class="options"
-            a EDIT
-            a REMOVE
-    = for grej <- [1,2,3,4] do
-        p=grej
+    = for grej <- [1,2,3,4, 5, 5, 6] do
+        div class="box"
+            a class="hero" = grej
+            section class="options"
+                a EDIT
+                a REMOVE
