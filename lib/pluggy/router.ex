@@ -2,11 +2,8 @@ defmodule Pluggy.Router do
   use Plug.Router
   use Plug.Debugger
 
-
   alias Pluggy.FruitController
   alias Pluggy.UserController
-
-
 
   plug(Plug.Static, at: "/", from: :pluggy)
   plug(:put_secret_key_base)
@@ -27,25 +24,10 @@ defmodule Pluggy.Router do
   plug(:dispatch)
 
   get("/") do
-<<<<<<< HEAD
-    if !UserController.logged_in() do
-      # redirect("/login")
-      IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
-    else
-      IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
-    end
-=======
-    # IO.puts("#====conn====#")
-    # IO.inspect(conn)
-    # IO.puts("#============#")
+    IO.puts("#====conn====#")
+    IO.inspect(conn)
+    IO.puts("#============#")
     FruitController.index(conn)
-    # if !UserController.logged_in() do
-    #   # redirect("/login")
-    #   IO.puts("DEN SÄGER ATT DU INTE ÄR GUD")
-    # else
-    #   IO.puts("DEN SÄGER ATT DU ÄR INLOGGAD?!?!?!")
-    # end
->>>>>>> ab193c204b2e2b9b32138121451c20bdd499a36c
   end
 
   post("user/login") do

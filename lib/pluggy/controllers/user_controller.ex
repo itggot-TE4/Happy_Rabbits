@@ -13,7 +13,6 @@ defmodule Pluggy.UserController do
       Postgrex.query!(DB, "SELECT id, pwdhash FROM users WHERE username = $1", [username],
         pool: DBConnection.ConnectionPool
       )
-
       case result.num_rows do
           # no user with that username
           0 ->
@@ -21,7 +20,7 @@ defmodule Pluggy.UserController do
             # user with that username exists
             _ ->
                 [[id, pwdhash]] = result.rows
-            
+
                 # make sure password is correct
 
             # if (pwdhash = password) do
