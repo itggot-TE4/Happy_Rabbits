@@ -1,3 +1,8 @@
-- h1 = "School"
-
-a href="/school/#{skola}/#{klass}"
+h1 School
+div class="gridcontainer"
+    = for grej <- [1,2,3,4, 5, 5, 6] do
+        div class="box"
+            a class="hero" = grej
+            section class="options"
+                a EDIT
+                a REMOVE
