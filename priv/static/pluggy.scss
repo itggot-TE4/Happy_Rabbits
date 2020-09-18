@@ -14,3 +14,21 @@ nav {
     padding: 0 15px 0 15px;
 }
 
+.gridcontainer {
+	display: grid;	
+	grid-template-columns: repeat(3,1fr);
+}
+
+.schoolsbox {
+	height: 200px;
+	width: 200px;
+	display: flex;
+	align-items: center;
+	background-color: lightskyblue;
+	margin: auto;
+	margin-top: 20px;
+}
+
+.schoolsbox p {
+	justify-content: center;
+}

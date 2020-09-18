@@ -1,3 +1,9 @@
 - h1 = "Schools"
+div class="gridcontainer"
+    div class="schoolsbox"
+        p oogie boogie
+    div class="schoolsbox"
+    div class="schoolsbox"
+    div class="schoolsbox"
 
 a hej
