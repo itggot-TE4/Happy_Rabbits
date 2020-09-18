@@ -5,5 +5,8 @@ div class="gridcontainer"
     div class="schoolsbox"
     div class="schoolsbox"
     div class="schoolsbox"
-    - Pluggy.IndexController.schoolrenderer([1,2,3,4])
+    / - Pluggy.IndexController.schoolrenderer([1,2,3,4])
+
+    = for grej <- [1,2,3,4] do
+        p=grej
 a hej
