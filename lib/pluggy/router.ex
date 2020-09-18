@@ -2,6 +2,7 @@ defmodule Pluggy.Router do
   use Plug.Router
   use Plug.Debugger
 
+  alias Pluggy.SchoolController
   alias Pluggy.IndexController
   alias Pluggy.UserController
   alias Pluggy.User
@@ -61,19 +62,19 @@ defmodule Pluggy.Router do
     else
       IndexController.qwe(conn, "/")
     end
-    
+
 
   end
 
 
   get("/") do
 
-    
+
     IndexController.index(conn)
-    
+
   end
-  
-  get("/sucess") do 
+
+  get("/sucess") do
     logged_in(conn)
     IndexController.sucess(conn)
   end
@@ -87,19 +88,19 @@ defmodule Pluggy.Router do
   end
 
   get("/schools") do
-    IndexController.index(conn, "schools")
+    SchoolController.schools(conn)
   end
 
   get("/schools/school") do
-    IndexController.index(conn, "school")
+    SchoolController.school(conn)
   end
 
-  get("/schools/school/class") do
-    IndexController.index(conn, "class")
+  get("/schools/school/group") do
+    SchoolController.group(conn)
   end
 
   get("/schools/school/class/quiz") do
-    IndexController.index(conn, "quiz")
+    SchoolController.quiz(conn)
   end
 
   # get("/fruits", do: FruitController.index(conn))
