@@ -42,6 +42,12 @@ nav {
 			display: flex;
 			align-items: center;
 			justify-content: space-around;
+
+			button {
+				border: none;
+				background: none;
+				color: white;
+			}
 		}
 	}
 }

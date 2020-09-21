@@ -4,6 +4,9 @@ div class="gridcontainer"
         div class="box" id="hej"
             h1 class="hero" =skola.name
             section class="options"
+                form action="/edit_school" method="post"
+                    input type="hidden" value="#{skola.id}" name="id"
+                    button type="submit" EDIT
                 form action="/remove_school" method="post"
                     input type="hidden" value="#{skola.id}" name="id"
-                    button type="submit" Remove
+                    button type="submit" REMOVE

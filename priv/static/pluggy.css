@@ -67,6 +67,12 @@ nav {
       justify-content: space-around;
 }
 
+.gridcontainer .box .options button {
+  border: none;
+  background: none;
+  color: white;
+}
+
 .quizcontainer {
   display: -webkit-box;
   display: -ms-flexbox;

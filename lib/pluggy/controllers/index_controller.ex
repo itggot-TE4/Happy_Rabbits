@@ -28,9 +28,7 @@ defmodule Pluggy.IndexController do
   end
 
   def qwe(conn, destination) do
-
-    redirect(conn, destination)
-
+      redirect(conn, destination)
   end
 
   #render använder eex

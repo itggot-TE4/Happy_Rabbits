@@ -1,19 +1,9 @@
 h1 Le index
 
-/ = if user do
-/ 	form action="/user/logout" method="post"
-/ 		button type="submit" Log Out
-/ - else
-/     form action="/user/login" method="post"
-/         label for="username" Username
-/         input type="text" name="username" id="username" value="temp"
-/         label for="password" Password
-/         input type="password" name="password" id="password" value="temp"
-/         button type="submit" Log In
-
-/ ul
-/   = for fruit <- fruits do
-/     li
-/       a href="/fruits/#{fruit.id}" #{fruit.name} - #{fruit.tastiness}
-
-/ a href="/fruits/new" Add new fruit
+div class="loginbox"
+    form action="/user/login" method="post"
+        label for="username" Username
+        input type="text" name="username" id="username" value="temp"
+        label for="password" Password
+        input type="password" name="password" id="password" value="temp"
+        button type="submit" Log In
