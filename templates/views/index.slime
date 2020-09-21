@@ -7,3 +7,26 @@ div class="loginbox"
         label for="password" Password
         input type="password" name="password" id="password" value="temp"
         button type="submit" Log In
+
+table
+    thead
+        tr
+            td
+                h2 Inloggning för tester
+    tbody
+        tr
+            td
+                form action="/user/login" method="post"
+                    label for="username" Username
+                    input type="text" name="username" id="username" value="temp"
+                    label for="password" Password
+                    input type="text" name="password" id="password" value="temp"
+                    button type="submit" = 'Log In as "temp"'
+        tr
+            td
+                form action="/user/login" method="post"
+                    label for="username" Username
+                    input type="text" name="username" id="username" value="bob"
+                    label for="password" Password
+                    input type="text" name="password" id="password" value="temp"
+                    button type="submit" = 'Log In as "bob"'

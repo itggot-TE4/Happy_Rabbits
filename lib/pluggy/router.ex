@@ -44,28 +44,7 @@ defmodule Pluggy.Router do
   #   end
 
   # end
-
-  # def before_do(conn) do
-
-  #   session_user = conn.private.plug_session["user_id"]
-
-  #   current_user =
-  #     case session_user do
-  #       nil -> nil
-  #       _ -> User.get(session_user)
-  #     end
-
-  #     # IO.inspect(current_user)
-
-  #   if (current_user == nil) do
-
-  #     IO.puts("hej")
-
-  #     put_resp_content_type(conn, "/sucess")
-  #   end
-
-  # end
-
+  
   def logged_in(conn) do
 
     session_user = conn.private.plug_session["user_id"]
@@ -76,11 +55,35 @@ defmodule Pluggy.Router do
         _ -> User.get(session_user)
       end
 
-    if current_user do
-
-    else
+    if !current_user do
       IndexController.qwe(conn, "/")
     end
+
+  end
+
+  def admin?(conn) do
+
+    session_user = conn.private.plug_session["user_id"]
+    
+    current_user =
+    case session_user do
+      nil -> nil
+      _ -> User.get(session_user)
+    end
+
+    if !current_user do
+      IndexController.qwe(conn, "/")
+    end
+
+    if (current_user.admin != 1) do
+      IndexController.qwe(conn, "/")
+    end
+
+  end
+
+  def before_do(conn) do
+
+    logged_in(conn)
 
   end
 
@@ -89,7 +92,8 @@ defmodule Pluggy.Router do
   end
 
   get("/sucess") do
-    logged_in(conn)
+    before_do(conn)
+    admin?(conn)
     IndexController.sucess(conn)
   end
 
@@ -102,22 +106,27 @@ defmodule Pluggy.Router do
   end
 
   get("/schools") do
+    before_do(conn)
     SchoolController.schools(conn)
   end
 
   post("/remove_school") do
+    before_do(conn)
     SchoolController.delete(conn)
   end
 
   get("/schools/school") do
+    before_do(conn)
     SchoolController.school(conn)
   end
 
   get("/schools/school/group") do
+    before_do(conn)
     SchoolController.group(conn)
   end
 
   get("/schools/school/class/quiz") do
+    before_do(conn)
     SchoolController.quiz(conn)
   end
 
