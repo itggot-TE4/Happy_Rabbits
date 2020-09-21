@@ -1,5 +1,5 @@
 defmodule Pluggy.Group do
-    defstruct(id: nil, name: "")
+    defstruct(id: nil, name: "", school_id: nil)
 
     alias Pluggy.Group
 
@@ -15,8 +15,8 @@ defmodule Pluggy.Group do
       |> to_struct
     end
 
-    def get_for_school(school_id) do
-      Postgrex.query!(DB, "SELECT * FROM groups WHERE school_id = $1 LIMIT 1", [String.to_integer(school_id)],
+    def get_for_school(school_name) do
+      Postgrex.query!(DB, "SELECT * FROM groups JOIN schools ON school_id = schools.id WHERE schools.name = $1", [school_name],
         pool: DBConnection.ConnectionPool
       ).rows
       |> to_struct
@@ -53,6 +53,7 @@ defmodule Pluggy.Group do
     end
 
     def to_struct_list(rows) do
-      for [id, name] <- rows, do: %Group{id: id, name: name}
+      for [id, name, school_id] <- rows, do: %Group{id: id, name: name, school_id: school_id}
     end
+
   end

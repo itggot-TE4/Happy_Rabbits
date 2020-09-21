@@ -1,12 +1,9 @@
-h1 Class
+h1 Group
 div class="gridcontainer"
-    = for group <- Pluggy.Group.all do
-        div class="box" id="hej"
-            h1 class="hero" =group.name
-            section class="options"
-                form action="/edit_group" method="post"
-                    input type="hidden" value="#{group.id}" name="id"
-                    button type="submit" EDIT
-                form action="/remove_group" method="post"
-                    input type="hidden" value="#{group.id}" name="id"
-                    button type="submit" REMOVE
+    / = for group <- Pluggy.Group.get_for_school(plug.query_parems) do
+    /     div class="box"
+    /         a class="hero" = grej
+    /         section class="options"
+    /             a EDIT
+    /             a REMOVE
+    p=group
