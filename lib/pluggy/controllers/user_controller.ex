@@ -19,6 +19,7 @@ defmodule Pluggy.UserController do
               redirect(conn, "/")
             # user with that username exists
             _ ->
+                IO.inspect(result.rows)
                 [[id, pwdhash]] = result.rows
 
                 # make sure password is correct

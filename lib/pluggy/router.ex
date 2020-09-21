@@ -89,6 +89,7 @@ defmodule Pluggy.Router do
   end
 
   get("/sucess") do
+    logged_in(conn)
     IndexController.sucess(conn)
   end
 

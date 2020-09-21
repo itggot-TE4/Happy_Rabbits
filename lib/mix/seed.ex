@@ -39,7 +39,7 @@ defmodule Mix.Tasks.Seed do
   defp standard_users() do
     IO.puts("Adding standard users")
     Postgrex.query!(DB, "INSERT INTO users (name, pwdhash, img_path, username, admin) VALUES ('temp', '$2b$12$EkW6ETcfQaiuD4lD9Sdvm.bqcJL6R/z.SHs9/twiUwwpA0kykrYs6', 'standard.png', 'temp', 1)", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO users (name, pwdhash, img_path, username, admin) VALUES ('bob', '$2b$12$EkW6ETcfQaiuD4lD9Sdvm.bqcJL6R/z.SHs9/twiUwwpA0kykrYs6', 'standard.png', 'temp', 0)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO users (name, pwdhash, img_path, username, admin) VALUES ('bob', '$2b$12$EkW6ETcfQaiuD4lD9Sdvm.bqcJL6R/z.SHs9/twiUwwpA0kykrYs6', 'standard.png', 'bob', 0)", [], pool: DBConnection.ConnectionPool)
   end
 
   defp standard_schools() do

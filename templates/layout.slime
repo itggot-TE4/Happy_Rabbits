@@ -7,4 +7,6 @@ html
     body
     nav
         h1 What's their face
+        form action="/user/logout" method="post"
+            button type="submit" Log Out
     = template
