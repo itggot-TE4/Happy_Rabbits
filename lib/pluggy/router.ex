@@ -44,7 +44,7 @@ defmodule Pluggy.Router do
   #   end
 
   # end
-  
+
   def logged_in(conn) do
 
     session_user = conn.private.plug_session["user_id"]
@@ -64,7 +64,7 @@ defmodule Pluggy.Router do
   def admin?(conn) do
 
     session_user = conn.private.plug_session["user_id"]
-    
+
     current_user =
     case session_user do
       nil -> nil
@@ -115,8 +115,9 @@ defmodule Pluggy.Router do
     SchoolController.delete(conn)
   end
 
-  get("/schools/school") do
+  get("/schools/:school") do
     before_do(conn)
+    IO.inspect(conn.params)
     SchoolController.school(conn)
   end
 
@@ -130,9 +131,31 @@ defmodule Pluggy.Router do
     SchoolController.quiz(conn)
   end
 
-  get("/quiz") do
-    SchoolController.quiz(conn)
+  post("/test") do
+
+    School.join("1")
+    # for school <- School.join("1") do
+    # IO.inspect(school)
+    # end
+    IndexController.qwe(conn, "/")
+
   end
+
+  # get("/fruits", do: FruitController.index(conn))
+  # get("/fruits/new", do: FruitController.new(conn))
+  # get("/fruits/:id", do: FruitController.show(conn, id))
+  # get("/fruits/:id/edit", do: FruitController.edit(conn, id))
+
+  # post("/fruits", do: FruitController.create(conn, conn.body_params))
+
+  # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  # post("/fruits/:id/edit", do: FruitController.update(conn, id, conn.body_params))
+
+  # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  # post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
+
+  # post("/users/login", do: UserController.login(conn, conn.body_params))
+  # post("/users/logout", do: UserController.logout(conn))
 
   match _ do
     send_resp(conn, 404, "oops")

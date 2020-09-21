@@ -10,11 +10,11 @@ defmodule Pluggy.SchoolController do
   end
 
   def school(conn) do
-    send_resp(conn, 200, srender("views/school", user: nil))
+    send_resp(conn, 200, srender("views/school", school: conn.params["school"]))
   end
 
   def group(conn) do
-    send_resp(conn, 200, srender("views/group", user: nil))
+    send_resp(conn, 200, srender("views/group", group: conn.params["group"]))
   end
 
   def quiz(conn) do
