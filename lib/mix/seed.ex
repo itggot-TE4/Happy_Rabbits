@@ -78,10 +78,10 @@ defmodule Mix.Tasks.Seed do
   defp standard_user_school() do
     IO.puts("Adding standard user_school")
     Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (1, 1)", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (1, 2)", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (2, 1)", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (2, 2)", [], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (3, 1)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (1, 2)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO user_school (school_id, user_id) VALUES (2, 2)", [], pool: DBConnection.ConnectionPool)
   end
 
   # defp seed_data() do
