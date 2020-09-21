@@ -38,13 +38,42 @@ defmodule Pluggy.School do
     def delete(id) do
       Postgrex.query!(DB, "DELETE FROM schools WHERE id = $1", [String.to_integer(id)], pool: DBConnection.ConnectionPool)
     end
+
+    def join(user_id) do
+      Postgrex.query!(DB, 
+      "SELECT (schools.id, schools.name) FROM schools JOIN user_school ON schools.id = user_school.school_id JOIN users ON user_school.user_id = users.id WHERE users.id = $1", 
+      [String.to_integer(user_id)], pool: DBConnection.ConnectionPool).rows
+      |>
+      to_struct_list_for_join()
+    end
   
     def to_struct([[id, name]]) do
       %School{id: id, name: name}
     end
   
     def to_struct_list(rows) do
+      IO.inspect(rows)
       for [id, name] <- rows, do: %School{id: id, name: name}
     end
+
+    defp to_struct_list_for_join([]) do
+
+    end
+
+    defp to_struct_list_for_join(joined_list) do
+      
+      # IO.inspect(joined_list)
+      for li_raw <- joined_list do
+        
+        # IO.inspect(li_raw)
+        [li|_] = li_raw
+
+        # IO.inspect(li)
+        to_struct([[elem(li,0),elem(li,1)]])
+        
+      end
+    end
+  end
+
   end
   

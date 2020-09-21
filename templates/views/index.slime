@@ -30,3 +30,7 @@ table
                     label for="password" Password
                     input type="text" name="password" id="password" value="temp"
                     button type="submit" = 'Log In as "bob"'
+        tr
+            td
+                form action="/test" method="post"
+                    button type="submit" = 'run test'
