@@ -1,1 +1,8 @@
 h1 quiz
+
+div class="quiz-container"
+    section class="img"
+        div
+    section class="names"
+        =for student <- Pluggy.Quiz.get_students("spergs - NTI (the good one)") do
+            button class="quizname" onclick="test(student.id)" =student.name
