@@ -17,7 +17,7 @@ defmodule Pluggy.SchoolController do
     send_resp(conn, 200, srender("views/group", user: nil))
   end
 
-  def quiz(conn) do
+  def  uiz(conn) do
     send_resp(conn, 200, srender("views/quiz", user: nil))
   end
 
