@@ -25,7 +25,7 @@ defmodule Pluggy.UserController do
                 # make sure password is correct
         if Bcrypt.verify_pass(password, pwdhash) do
           Plug.Conn.put_session(conn, :user_id, id)
-          |> redirect("/") #skicka vidare modifierad conn
+          |> redirect("/schools") #skicka vidare modifierad conn
         else
           redirect(conn, "/")
         end
