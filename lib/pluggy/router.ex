@@ -131,6 +131,16 @@ defmodule Pluggy.Router do
     SchoolController.quiz(conn)
   end
 
+  post("/test") do
+
+    School.join("1")
+    # for school <- School.join("1") do
+    # IO.inspect(school)
+    # end
+    IndexController.qwe(conn, "/")
+
+  end
+
   # get("/fruits", do: FruitController.index(conn))
   # get("/fruits/new", do: FruitController.new(conn))
   # get("/fruits/:id", do: FruitController.show(conn, id))
