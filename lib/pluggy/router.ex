@@ -44,7 +44,7 @@ defmodule Pluggy.Router do
   #   end
 
   # end
-  
+
   def logged_in(conn) do
 
     session_user = conn.private.plug_session["user_id"]
@@ -64,7 +64,7 @@ defmodule Pluggy.Router do
   def admin?(conn) do
 
     session_user = conn.private.plug_session["user_id"]
-    
+
     current_user =
     case session_user do
       nil -> nil
@@ -115,8 +115,9 @@ defmodule Pluggy.Router do
     SchoolController.delete(conn)
   end
 
-  get("/schools/school") do
+  get("/schools/:school") do
     before_do(conn)
+    IO.inspect(conn.params)
     SchoolController.school(conn)
   end
 

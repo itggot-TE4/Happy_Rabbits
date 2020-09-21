@@ -1,8 +1,9 @@
 h1 School
 div class="gridcontainer"
-    = for grej <- [1,2,3,4, 5, 5, 6] do
-        div class="box"
-            a class="hero" = grej
-            section class="options"
-                a EDIT
-                a REMOVE
+    / = for group <- Pluggy.Group.get_for_school(plug.query_parems) do
+    /     div class="box"
+    /         a class="hero" = grej
+    /         section class="options"
+    /             a EDIT
+    /             a REMOVE
+    p=school
