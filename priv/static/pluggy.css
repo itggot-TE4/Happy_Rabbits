@@ -21,13 +21,34 @@ nav {
   color: whitesmoke;
 }
 
+.header {
+  max-width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.inputbox {
+  width: 100%;
+  max-width: 500%;
+}
+
 .gridcontainer {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   max-width: 60vw;
-  margin: auto;
 }
 
 .gridcontainer .box {
@@ -35,11 +56,11 @@ nav {
   width: 15vw;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 10vw 5vw;
-      grid-template-rows: 10vw 5vw;
+  -ms-grid-rows: 2fr 1fr;
+      grid-template-rows: 2fr 1fr;
   background-color: lightskyblue;
   color: whitesmoke;
-  margin: 20px 0 0 auto;
+  margin: 2.5vw;
 }
 
 .gridcontainer .box .hero {
@@ -53,7 +74,17 @@ nav {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: x-large;
+  font-size: 1rem;
+  max-width: inherit;
+  margin: 0;
+}
+
+.gridcontainer .box a {
+  width: inherit;
+}
+
+.gridcontainer .box form {
+  max-width: 100%;
 }
 
 .gridcontainer .box .options {

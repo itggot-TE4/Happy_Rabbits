@@ -29,7 +29,6 @@ defmodule Pluggy.School do
 
     def create(params) do
       name = params["name"]
-
       Postgrex.query!(DB, "INSERT INTO schools (name) VALUES ($1)", [name],
         pool: DBConnection.ConnectionPool
       )
@@ -52,7 +51,6 @@ defmodule Pluggy.School do
     end
 
     def to_struct_list(rows) do
-      IO.inspect(rows)
       for [id, name] <- rows, do: %School{id: id, name: name}
     end
 

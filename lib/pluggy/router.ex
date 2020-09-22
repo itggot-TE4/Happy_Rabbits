@@ -107,20 +107,34 @@ defmodule Pluggy.Router do
 
   get("/schools") do
     before_do(conn)
-    IO.inspect(is_admin?(conn))
-    # IO.inspect(is_boolean(is_admin?(conn)))
+    if is_admin?(conn) do
+      SchoolController.schools(conn, School.all, is_admin?(conn))
+    end
     SchoolController.schools(conn, School.join(conn.private.plug_session["user_id"]), is_admin?(conn))
+  end
+
+  post("/create_school") do
+    before_do(conn)
+    admin?(conn)
+    SchoolController.create(conn)
   end
 
   post("/remove_school") do
     before_do(conn)
+    admin?(conn)
     SchoolController.delete(conn)
+  end
+
+  post("/edit_school") do
+    before_do(conn)
+    admin?(conn)
+    SchoolController.update(conn)
   end
 
   get("/schools/:school") do
     before_do(conn)
     IO.inspect(conn.params)
-    SchoolController.school(conn)
+    SchoolController.school(conn, is_admin(conn))
   end
 
   get("/schools/school/group") do
@@ -135,7 +149,7 @@ defmodule Pluggy.Router do
 
   post("/test") do
 
-    School.join("1")
+    School.join(1)
     # for school <- School.join("1") do
     # IO.inspect(school)
     # end

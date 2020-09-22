@@ -15,29 +15,54 @@ nav {
 	color: whitesmoke;
 }
 
-.gridcontainer {
-	display: grid;	
-	grid-template-columns: repeat(3,1fr);
+.header{
+	max-width: 100%;
+}
+
+.wrapper{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.inputbox{
+	width: 100%;
+	max-width: 500%;
+}
+
+.gridcontainer{
+	display: flex;
+	flex-wrap: wrap;
 	max-width: 60vw;
-	margin: auto;
 
 	.box {
 		height: 15vw;
 		width: 15vw;
 		display: grid; 
-		grid-template-rows: 10vw 5vw;
+		grid-template-rows: 2fr 1fr;
 		background-color: lightskyblue;
 		color: whitesmoke;
-		margin: 20px 0 0 auto;
-
+		margin: 2.5vw;
+		
 		.hero {
 			background: rgb(180, 226, 255);
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			font-size: x-large;
+			font-size: 1rem;
+			max-width: inherit;
+			margin: 0;
 		}
 
+		a {
+			width: inherit;
+		}
+
+		form {
+			max-width: 100%;
+		}
+		
 		.options {
 			display: flex;
 			align-items: center;

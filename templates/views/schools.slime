@@ -1,16 +1,23 @@
-h1 Schools
+h1 class="header" Schools
 div class="gridcontainer"
     = for school <- schools do
         div class="box" id="hej"
-            a href="/schools/#{school.name}"
+            a href="/schools/#{school.name}" class="schools_a"
                 h1 class="hero" =school.name
-            section class="options"
-                form action="/edit_school" method="post"
-                    input type="hidden" value="#{school.id}" name="id"
-                    button type="submit" EDIT
-                form action="/remove_school" method="post"
-                    input type="hidden" value="#{school.id}" name="id"
-                    button type="submit" REMOVE
+            =if admin do
+                section class="options"
+                    form action="/edit_school" method="post"
+                        input type="hidden" value="#{school.id}" name="id"
+                        input type="text" value="new_name" name="name" class="inputbox"
+                        button type="submit" EDIT
+                    form action="/remove_school" method="post"
+                        input type="hidden" value="#{school.id}" name="id"
+                        button type="submit" REMOVE
 
-= if admin do 
-    
+    = if admin do
+        div class="box" id="createschool"
+            section
+                h2 Create new school
+            form action="/create_school" method="post"
+                input type="text" name="name" value="test" class="inputbox"
+                button type="submit" add

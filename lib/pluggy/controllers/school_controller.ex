@@ -9,8 +9,8 @@ defmodule Pluggy.SchoolController do
     send_resp(conn, 200, srender("views/schools", schools: schools, admin: admin))
   end
 
-  def school(conn) do
-    send_resp(conn, 200, srender("views/school", school: conn.params["school"]))
+  def school(conn, admin) do
+    send_resp(conn, 200, srender("views/school", school: conn.params["school"], admin: admin))
   end
 
   def group(conn) do
@@ -21,8 +21,18 @@ defmodule Pluggy.SchoolController do
     send_resp(conn, 200, srender("views/quiz", school: conn.params["school"] , group: conn.params["group"]))
   end
 
+  def update(conn) do
+    School.update(conn.body_params["id"], conn.params)
+    redirect(conn, "/schools")
+  end
+
   def delete(conn) do
     School.delete(conn.body_params["id"])
+    redirect(conn, "/schools")
+  end
+
+  def create(conn) do
+    School.create(conn.params)
     redirect(conn, "/schools")
   end
 
