@@ -10,7 +10,7 @@ defmodule Pluggy.UserController do
 
      #Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
     result =
-      Postgrex.query!(DB, "SELECT id, pwdhash FROM users WHERE username = $1", [username],
+      Postgrex.query!(DB, "SELECT id, pwdhash, admin FROM users WHERE username = $1", [username],
         pool: DBConnection.ConnectionPool
       )
       case result.num_rows do
@@ -19,8 +19,8 @@ defmodule Pluggy.UserController do
               redirect(conn, "/")
             # user with that username exists
             _ ->
-                IO.inspect(result.rows)
-                [[id, pwdhash]] = result.rows
+                # IO.inspect(result.rows)
+                [[id, pwdhash, admin]] = result.rows
 
                 # make sure password is correct
         if Bcrypt.verify_pass(password, pwdhash) do

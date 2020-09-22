@@ -11,3 +11,6 @@ div class="gridcontainer"
                 form action="/remove_school" method="post"
                     input type="hidden" value="#{school.id}" name="id"
                     button type="submit" REMOVE
+
+= if admin do
+    

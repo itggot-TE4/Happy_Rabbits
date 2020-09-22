@@ -63,6 +63,24 @@ defmodule Pluggy.Router do
 
   end
 
+  def is_admin?(conn) do
+
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+    case session_user do
+      nil -> nil
+      _ -> User.get(session_user)
+    end
+
+    admin = 
+    case current_user.admin do
+      1 -> true
+      _ -> nil
+    end
+
+  end
+
   def before_do(conn) do
 
     logged_in(conn)
@@ -89,7 +107,9 @@ defmodule Pluggy.Router do
 
   get("/schools") do
     before_do(conn)
-    SchoolController.schools(conn, School.join(conn.private.plug_session["user_id"]))
+    IO.inspect(is_admin?(conn))
+    # IO.inspect(is_boolean(is_admin?(conn)))
+    SchoolController.schools(conn, School.join(conn.private.plug_session["user_id"]), is_admin?(conn))
   end
 
   post("/remove_school") do

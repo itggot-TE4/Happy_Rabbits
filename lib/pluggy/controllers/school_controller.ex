@@ -5,8 +5,8 @@ defmodule Pluggy.SchoolController do
   import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
-  def schools(conn, schools) do
-    send_resp(conn, 200, srender("views/schools", schools: schools))
+  def schools(conn, schools, admin) do
+    send_resp(conn, 200, srender("views/schools", schools: schools, admin: admin))
   end
 
   def school(conn) do
