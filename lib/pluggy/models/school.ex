@@ -42,7 +42,7 @@ defmodule Pluggy.School do
     def join(user_id) do
       Postgrex.query!(DB,
       "SELECT (schools.id, schools.name) FROM schools JOIN user_school ON schools.id = user_school.school_id JOIN users ON user_school.user_id = users.id WHERE users.id = $1",
-      [String.to_integer(user_id)], pool: DBConnection.ConnectionPool).rows
+      [user_id], pool: DBConnection.ConnectionPool).rows
       |>
       to_struct_list_for_join()
     end

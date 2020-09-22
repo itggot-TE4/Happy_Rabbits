@@ -1,6 +1,6 @@
 h1 Schools
 div class="gridcontainer"
-    = for school <- Pluggy.School.all do
+    = for school <- schools do
         div class="box" id="hej"
             a href="/schools/#{school.name}"
                 h1 class="hero" =school.name

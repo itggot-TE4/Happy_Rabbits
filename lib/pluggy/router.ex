@@ -27,24 +27,6 @@ defmodule Pluggy.Router do
   plug(:match)
   plug(:dispatch)
 
-  # def logged_in(conn) do
-
-  #   session_user = conn.private.plug_session["user_id"]
-
-  #   current_user =
-  #     case session_user do
-  #       nil -> nil
-  #       _ -> User.get(session_user)
-  #     end
-
-  #   if current_user do
-
-  #   else
-  #     IndexController.qwe(conn)
-  #   end
-
-  # end
-
   def logged_in(conn) do
 
     session_user = conn.private.plug_session["user_id"]
@@ -72,11 +54,11 @@ defmodule Pluggy.Router do
     end
 
     if !current_user do
-      IndexController.qwe(conn, "/")
+      redirect(conn, "/")
     end
 
     if (current_user.admin != 1) do
-      IndexController.qwe(conn, "/")
+      redirect(conn, "/")
     end
 
   end
@@ -107,7 +89,7 @@ defmodule Pluggy.Router do
 
   get("/schools") do
     before_do(conn)
-    SchoolController.schools(conn)
+    SchoolController.schools(conn, School.join(conn.private.plug_session["user_id"]))
   end
 
   post("/remove_school") do
@@ -156,6 +138,10 @@ defmodule Pluggy.Router do
 
   # post("/users/login", do: UserController.login(conn, conn.body_params))
   # post("/users/logout", do: UserController.logout(conn))
+
+  defp redirect(conn, url) do
+    Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+  end
 
   match _ do
     send_resp(conn, 404, "oops")
