@@ -70,6 +70,5 @@ defmodule Pluggy.School do
 
       end
     end
-  end
 
   end
