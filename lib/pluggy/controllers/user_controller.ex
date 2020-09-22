@@ -47,4 +47,5 @@ defmodule Pluggy.UserController do
 
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+
 end
