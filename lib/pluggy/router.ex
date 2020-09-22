@@ -134,7 +134,7 @@ defmodule Pluggy.Router do
   get("/schools/:school") do
     before_do(conn)
     IO.inspect(conn.params)
-    SchoolController.school(conn, is_admin(conn))
+    SchoolController.school(conn, is_admin?(conn))
   end
 
   get("/schools/school/group") do
