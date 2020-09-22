@@ -73,7 +73,7 @@ defmodule Pluggy.Router do
       _ -> User.get(session_user)
     end
 
-    admin = 
+    admin =
     case current_user.admin do
       1 -> true
       _ -> nil
@@ -128,7 +128,7 @@ defmodule Pluggy.Router do
     SchoolController.group(conn)
   end
 
-  get("/schools/school/class/quiz") do
+  get("/schools/:school/:group/quiz") do
     before_do(conn)
     SchoolController.quiz(conn)
   end

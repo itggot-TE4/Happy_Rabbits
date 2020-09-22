@@ -12,5 +12,5 @@ div class="gridcontainer"
                     input type="hidden" value="#{school.id}" name="id"
                     button type="submit" REMOVE
 
-= if admin do
+= if admin do 
     
