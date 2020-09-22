@@ -37,8 +37,8 @@ defmodule Pluggy.Group do
 
     def create(params) do
       name = params["name"]
-
-      Postgrex.query!(DB, "INSERT INTO groups (name) VALUES ($1)", [name],
+      school_id = String.to_integer(params["school_id"])
+      Postgrex.query!(DB, "INSERT INTO groups (name, school_id) VALUES ($1,$2)", [name, school_id],
         pool: DBConnection.ConnectionPool
       )
     end

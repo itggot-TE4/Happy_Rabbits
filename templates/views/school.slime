@@ -1,5 +1,6 @@
 h1=school
 div class="gridcontainer"
+    -[group_1|_other_groups] = Pluggy.Group.get_for_school(school)
     = for group <- Pluggy.Group.get_for_school(school) do
         div class="box" id="hej"
             a href="/schools/#{school}/#{group.name}"
@@ -7,12 +8,18 @@ div class="gridcontainer"
             section class="options"
                 form action="/edit_group" method="post"
                     input type="hidden" value="#{group.id}" name="id"
+                    input type="hidden" value="#{school}" name="school_name"
                     button type="submit" EDIT
+                form action="/remove_group" method="post"
+                    input type="hidden" value="#{group.id}" name="id"
+                    input type="hidden" value="#{school}" name="school_name"
+                    button type="submit" REMOVE
 =if admin do
     div class="box" id="createschool"
             section
-            /     h2 Create new group
-            / form action="/create_group" method="post"
-            /     input type="text" name="name" value="test" class="inputbox"
-            /     input type="hidden" value="#{}" name="school_id"
-            /     button type="submit" add
+                h2 Create new group
+            form action="/create_group" method="post"
+                input type="text" name="name" value="test" class="inputbox"
+                input type="hidden" value="#{group_1.school_id}" name="school_id"
+                input type="hidden" value="#{school}" name="school_name"
+                button type="submit" add

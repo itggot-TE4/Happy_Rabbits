@@ -119,10 +119,22 @@ defmodule Pluggy.Router do
     SchoolController.create(conn)
   end
 
+  post("/create_group") do
+    before_do(conn)
+    admin?(conn)
+    SchoolController.create_group(conn)
+  end
+
   post("/remove_school") do
     before_do(conn)
     admin?(conn)
     SchoolController.delete(conn)
+  end
+
+  post("/remove_group") do
+    before_do(conn)
+    admin?(conn)
+    SchoolController.remove_group(conn)
   end
 
   post("/edit_school") do

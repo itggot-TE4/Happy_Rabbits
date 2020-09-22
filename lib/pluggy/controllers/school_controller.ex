@@ -2,6 +2,7 @@ defmodule Pluggy.SchoolController do
   require IEx
 
   alias Pluggy.School
+  alias Pluggy.Group
   import Pluggy.Template, only: [render: 2, srender: 2]
   import Plug.Conn, only: [send_resp: 3]
 
@@ -34,6 +35,18 @@ defmodule Pluggy.SchoolController do
   def create(conn) do
     School.create(conn.params)
     redirect(conn, "/schools")
+  end
+  
+  def create_group(conn) do
+    school = conn.params["school_name"]
+    Group.create(conn.params)
+    redirect(conn, "/schools/#{school}")
+  end
+  
+  def remove_group(conn) do
+    school = conn.params["school_name"]
+    Group.delete(conn.params["id"])
+    redirect(conn, "/schools/#{school}")
   end
 
   defp redirect(conn, url) do

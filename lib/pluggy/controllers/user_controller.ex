@@ -47,10 +47,4 @@ defmodule Pluggy.UserController do
 
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
-
-  def is_admin() do
-    Postgrex.query!(DB, "SELECT admin FROM users WHERE username = $1", [username],
-    pool: DBConnection.ConnectionPool
-  end
-
 end
