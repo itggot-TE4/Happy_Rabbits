@@ -16,10 +16,11 @@ defmodule Pluggy.Group do
     end
 
     def get_for_school(school_name) do
-      Postgrex.query!(DB, "SELECT * FROM groups JOIN schools ON school_id = schools.id WHERE schools.name = $1", [school_name],
+      Postgrex.query!(DB, "SELECT (groups.id, groups.name, schools.id) FROM groups JOIN schools ON school_id = schools.id WHERE schools.name = $1", [school_name],
         pool: DBConnection.ConnectionPool
       ).rows
-      |> to_struct_list
+      |> IO.inspect()
+      |> to_struct_list_for_join()
     end
 
     def update(id, params) do
@@ -48,12 +49,15 @@ defmodule Pluggy.Group do
       )
     end
 
-    def to_struct([[id, name]]) do
-      %Group{id: id, name: name}
+    def to_struct([[id, name, school_id]]) do
+      %Group{id: id, name: name, school_id: school_id}
     end
 
     def to_struct_list(rows) do
-      for [id, name, school_id] <- rows, do: %Group{id: id, name: name, school_id: school_id}
+      for row <- rows do
+        IO.inspect(row)
+      end
+      IO.inspect(for [id, name, school_id] <- rows, do: %Group{id: id, name: name, school_id: school_id})
     end
 
     defp to_struct_list_for_join(joined_list) do
@@ -65,7 +69,8 @@ defmodule Pluggy.Group do
         [li|_] = li_raw
 
         # IO.inspect(li)
-        to_struct([[elem(li,0),elem(li,1)]])
+        to_struct([[elem(li,0), elem(li,1), elem(li,2)]])
+        |> IO.inspect()
 
       end
     end
