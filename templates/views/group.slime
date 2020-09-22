@@ -6,4 +6,5 @@ div class="gridcontainer"
     /         section class="options"
     /             a EDIT
     /             a REMOVE
-    p=group
+    a href="/schools/#{school}/#{group}/quiz"
+    p=group 
