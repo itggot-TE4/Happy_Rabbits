@@ -1,3 +1,4 @@
-function setQuizImg(students) {
-    console.log(students);
+setQuizImg();
+function setQuizImg() {
+    console.log(document.getElementsByClassName("student-fax"));
 }

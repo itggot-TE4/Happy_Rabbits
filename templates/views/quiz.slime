@@ -1,4 +1,4 @@
-h1 quiz
+h1 Quiz - NTI-Johanneberg
 
 div class="quiz-container"
     section class="img"
@@ -6,4 +6,9 @@ div class="quiz-container"
     section class="names"
         -students = Pluggy.Quiz.get_students("spergs - NTI (the good one)")
         =for student <- students do
-            button class="quizname" onclick="setQuizImg(students)" =student.name
+            button class="quizname" onclick="setQuizImg()" ="#{student.name}"
+            div class="student-fax"
+                div class="id" ="#{student.id}"
+                div class="name" ="#{student.name}"
+                div class="img_path" ="#{student.img_path}"
+script src="/main.js"
