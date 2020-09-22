@@ -52,8 +52,38 @@ nav {
 	}
 }
 
-.quizcontainer {
-	display: flex;
-	align-content: center;
+.quiz-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin: auto;
+	width: 40vw;
+	height: 70vh;
+	background: #eeeeee;
 	
+	.img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		div {
+			background-image: url("/uploads/shrek.png");
+			background-size: cover;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.names {
+		display: grid;
+		grid-template-columns: 1;
+
+
+		button {
+			background: rgb(57, 179, 255);
+			border: none;
+			border-radius: 5px;
+			width: 60%;
+			height: 6vh;
+			margin: auto;
+		}
+	}
 }
