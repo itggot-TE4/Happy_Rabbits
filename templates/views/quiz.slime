@@ -1,8 +1,14 @@
-h1 quiz
+h1 Quiz - NTI-Johanneberg
 
 div class="quiz-container"
     section class="img"
-        div
+        div class="actual-img"
     section class="names"
-        =for student <- Pluggy.Quiz.get_students("spergs - NTI (the good one)") do
-            button class="quizname" onclick="test(student.id)" =student.name
+        -students = Pluggy.Quiz.get_students("spergs - NTI (the good one)")
+        =for student <- students do
+            button class="quizname" onclick="yeayeyayeayh()" ="#{student.name}"
+            div class="student-fax"
+                div class="id" ="#{student.id}"
+                div class="name" ="#{student.name}"
+                div class="img_path" ="#{student.img_path}"
+script src="/main.js"

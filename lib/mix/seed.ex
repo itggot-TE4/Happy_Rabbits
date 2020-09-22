@@ -61,18 +61,19 @@ defmodule Mix.Tasks.Seed do
 
   defp standard_students() do
     IO.puts("Adding standard students")
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven1-1', 1, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven1-2', 1, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven2-1', 2, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven2-2', 2, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven3-1', 3, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven3-2', 3, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob1-1', 4, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob2-1', 5, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob3-1', 6, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob1-2', 4, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob2-2', 5, 'temp')", [], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('bob3-2', 6, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('sven', 1, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Cleas', 1, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Sigrid', 2, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Bertfrid', 2, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Gunnar', 2, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Anna', 3, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Fritiofs', 3, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Bengt', 4, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Gunnilla', 5, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('David Guetta', 6, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Daniel', 4, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Kristina', 5, 'temp')", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students (name, group_id, img_path) VALUES ('Stefan', 6, 'temp')", [], pool: DBConnection.ConnectionPool)
   end
 
   defp standard_user_school() do
