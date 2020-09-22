@@ -1,3 +1,3 @@
-function test(yeah) {
-    console.log(yeah);
+function setQuizImg(students) {
+    console.log(students);
 }

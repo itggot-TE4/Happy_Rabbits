@@ -10,14 +10,12 @@ defmodule Pluggy.Quiz do
         Postgrex.query!(DB, "SELECT id, name FROM students WHERE group_id = $1", [head], pool: DBConnection.ConnectionPool).rows
         |> IO.inspect
         |> to_struct_list
-        # |> IO.inspect
     end
 
     def to_struct([[id, name]]) do
         %Quiz{id: id, name: name}
     end
 
-    # fungerar inte hahahahahhaahahahahahhahac hjagfg äslakrt elsiuxjkdawera
     def to_struct_list(rows) do
         for row <- rows, do: IO.inspect(row)
         for [id, name] <- rows, do: %Quiz{id: id, name: name}

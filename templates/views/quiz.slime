@@ -4,5 +4,6 @@ div class="quiz-container"
     section class="img"
         div
     section class="names"
-        =for student <- Pluggy.Quiz.get_students("spergs - NTI (the good one)") do
-            button class="quizname" onclick="test(student.id)" =student.name
+        -students = Pluggy.Quiz.get_students("spergs - NTI (the good one)")
+        =for student <- students do
+            button class="quizname" onclick="setQuizImg(students)" =student.name
