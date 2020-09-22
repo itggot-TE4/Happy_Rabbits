@@ -1,5 +1,5 @@
 defmodule Pluggy.Quiz do
-    defstruct(id: nil, group_name: "")
+    defstruct(id: nil,name: "")
 
     alias Pluggy.Quiz
 
@@ -14,13 +14,13 @@ defmodule Pluggy.Quiz do
     end
 
     def to_struct([[id, name]]) do
-        %Quiz{id: id, group_name: name}
+        %Quiz{id: id, name: name}
     end
 
     # fungerar inte hahahahahhaahahahahahhahac hjagfg äslakrt elsiuxjkdawera
     def to_struct_list(rows) do
         for row <- rows, do: IO.inspect(row)
-        for [id, name] <- rows, do: %Quiz{id: id, group_name: name}
+        for [id, name] <- rows, do: %Quiz{id: id, name: name}
     end
 
 end
